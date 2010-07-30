@@ -1,0 +1,20 @@
+title: Kraken - 0.1 feature list
+date: Fri Jul 30 2010
+
+My goal for 0.1 is to get the blog up and running as soon as possible, with a minimal amount of polish.  It just needs to _work_.
+
+(For those who are reading this on the web, I actually am writing these initial posts in text files, that I plan on uplaoding to the blog once it is running.)
+
+With the simple "it needs to work" goal in mind, I have the following feature
+list:
+Publically visible features:
+* A main page with a title, posts in order by date, and a link to a static about page.
+* Post titles should be clickable and go to a page that displays only that post.
+* A static about page that lists a few things about me, because I crave attention.
+
+Behind the scenes features:
+* Some sort of storage for posts (sql/nosql/flat file, I don't really care for 0.1).
+* Some method for adding posts, deleting posts, and editing posts.  I was originally going to say "an authenticated admin page" but that may not be the quickest
+way to get up and running.
+
+I think those 5 bullet points are it for 0.1.  Once I have those bits up and running I'll be able to get all these blog posts on the web, which will be a great "small victory" for the project.
