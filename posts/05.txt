@@ -13,3 +13,5 @@ flow is:
 I'm sure this will change eventually, but it's more than sufficient to get started.
 
 Right now all the static files have to be in a "public" subdirectory of the project.  In a future revision this will need to be part of a configuration file (along with other things like the port, datastore configuration, etc), but hardcoded will work for 0.1.
+
+Next I want to find a way to throw some dynamic content into a template.  That plus the static file support I just made should be enough to get the basics of a main page going.
