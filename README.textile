@@ -1,16 +1,16 @@
-# kraken
+.h1 kraken
 
 Kraken is a small blogging platform that I am using as a basis to learn clojure, and whatever other tech/tools I end up throwing in.
 
-## Usage
+.h1 Usage
 
 You really shouldn't be using it yet -- this section will be updated with usage once the project is, well, usable.
 
-## Installation
+.h1 Installation
 
 See: Usage.
 
-## License
+.h1 License
 
 Copyright (C) 2010 Ryan Evans, me@rjevans.net
 
