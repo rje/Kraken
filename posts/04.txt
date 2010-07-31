@@ -1,0 +1,10 @@
+title: Step 1 - Basic framework and serving static files
+date: Fri Jul 30 2010
+
+As a first step I want to create two pieces:
+1. A simple handler that can handle routing a request to different functions
+depending on what the request is.
+2. A handler to return static files.
+
+I figure this is the "hello world" of web frameworks, so it's a good place to
+start.
