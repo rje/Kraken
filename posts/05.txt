@@ -1,0 +1,15 @@
+title: serving static files is go!
+date: Fri Jul 30 2010
+
+So as per the last post, I now have a very simple routing function, it's basic
+flow is:
+<code>
+  (cond (= &lt;some future dynamic path&gt;) (return-dynamic-content ...)
+        ... (other dynamic paths) ...
+        (static-files/file-exists? (:uri request)) (return-file ...)
+        :else (return-404))
+</code>
+
+I'm sure this will change eventually, but it's more than sufficient to get started.
+
+Right now all the static files have to be in a "public" subdirectory of the project.  In a future revision this will need to be part of a configuration file (along with other things like the port, datastore configuration, etc), but hardcoded will work for 0.1.
