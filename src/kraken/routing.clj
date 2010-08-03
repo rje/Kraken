@@ -1,15 +1,30 @@
 (ns kraken.routing
-  (:require [aleph.core :as alephc]
-            [kraken.static-files :as static-files]))
+  (:use [aleph.core])
+  (:require [kraken.static-files :as static-files]
+            [kraken.index-controller :as index-controller]))
 
-(defn return-placeholder-index [channel request]
-  (alephc/enqueue-and-close channel
-    {:status 200
-     :body "This is a default index, have a link to a <a href=\"foo.html\">static page</a>"}))
+(defn test-controller [channel request]
+  (aleph.core/enqueue-and-close channel {:status 200 :body "test"}))
+
+(def controller-map {
+    #"^/$" index-controller/render-view,
+    #"^/test" test-controller
+  })
+
+(defn controller-for-uri [uri]
+  (let [result (first 
+                 (filter 
+                   #(not (= nil (re-find (key %) uri))) 
+                   controller-map))]
+    (cond (= nil result) nil
+          :else (val result))))
+
+(defn have-controller-for-uri? [uri]
+ (not (= nil (controller-for-uri uri))))
 
 (defn route [channel request]
-  (cond (= "/" (:uri request))
-          (return-placeholder-index channel request)
+  (cond (have-controller-for-uri? (:uri request))
+          ((controller-for-uri (:uri request)) channel request)
         (static-files/file-exists? (:uri request))
           (static-files/return-file channel request)
         :else

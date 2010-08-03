@@ -1,5 +1,6 @@
 (ns kraken.core
   (:gen-class)
+  (:use [aleph.core])
   (:require [aleph.http]
             [kraken.routing :as routing]))
 
