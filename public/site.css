@@ -15,6 +15,24 @@ h1 {
   padding-left:120px;
 }
 
+a:link {
+  text-decoration: none;
+  color: #000000;
+}
+
+a:visited {
+  color: #000000;
+}
+
+a:hover {
+   background-color: #E0FFFF;
+}
+
+.gist {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 h2 {
    margin: 0em;
    font-weight: normal;
@@ -23,7 +41,7 @@ h2 {
 
 h3 {
   font-size: 0.91em;
-  font-weight: normal;
+  font-weight: bold;
 }
 
 h4 {
@@ -58,15 +76,25 @@ h1, h2, h3, h4 {
 }
 
 #content p {
-  font-size: 0.91em;
+  font-size: 0.85em;
   margin: 0;
   padding: 0;
 }
 
 #posts {
   margin-right: 200px;
-  margin-left: 80px;
+  margin-left: 140px;
   margin-top: 20px;
+}
+
+.post {
+    margin-bottom: 40px;
+}
+
+.postdate {
+  font-size: 0.7em;
+  font-style: italic;
+  margin-bottom: 10px;
 }
 
 #sidebar {
@@ -75,7 +103,10 @@ h1, h2, h3, h4 {
 }
 
 #footer {
-  font-size: 0.91em;
+  text-align: center;
+  font-style: italic;
+  color: #888888;
+  font-size: 0.8em;
   clear: both;
   height: 80px;
 }

@@ -1,14 +1,12 @@
 (ns kraken.routing
   (:use [aleph.core])
   (:require [kraken.static-files :as static-files]
+            [kraken.post-controller :as post-controller]
             [kraken.index-controller :as index-controller]))
-
-(defn test-controller [channel request]
-  (aleph.core/enqueue-and-close channel {:status 200 :body "test"}))
 
 (def controller-map {
     #"^/$" index-controller/render-view,
-    #"^/test" test-controller
+    #"^/post/" post-controller/render-view
   })
 
 (defn controller-for-uri [uri]
