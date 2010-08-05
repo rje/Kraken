@@ -81,6 +81,10 @@ h1, h2, h3, h4 {
   margin: 10px;
 }
 
+#content ul li {
+  font-size: 0.85em;
+}
+
 #posts {
   margin-right: 200px;
   margin-left: 140px;
