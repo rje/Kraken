@@ -77,8 +77,8 @@ h1, h2, h3, h4 {
 
 #content p {
   font-size: 0.85em;
-  margin: 0;
   padding: 0;
+  margin: 10px;
 }
 
 #posts {
@@ -89,10 +89,6 @@ h1, h2, h3, h4 {
 
 .post {
     margin-bottom: 40px;
-}
-
-.post p {
-  margin-top: 10px;
 }
 
 .postdate {
