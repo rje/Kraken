@@ -91,10 +91,13 @@ h1, h2, h3, h4 {
     margin-bottom: 40px;
 }
 
+.post p {
+  margin-top: 10px;
+}
+
 .postdate {
   font-size: 0.7em;
   font-style: italic;
-  margin-bottom: 10px;
 }
 
 #sidebar {
