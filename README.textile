@@ -1,6 +1,6 @@
 *kraken*
 
-Kraken is a small blogging platform that I am using as a basis to learn clojure, and whatever other tech/tools I end up throwing in.
+Kraken is a small web framework that I'm using to run my website at http://rjevans.net.  My goal is to make a simple and lightweight basis that people can use for a variety of webapps.  Kraken uses aleph for the base server functionality, and I recommend enlive for html templates.
 
 *Usage*
 
