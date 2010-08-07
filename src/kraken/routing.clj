@@ -1,19 +1,13 @@
 (ns kraken.routing
-  (:use [aleph.core])
-  (:require [kraken.static-files :as static-files]
-            [kraken.post-controller :as post-controller]
-            [kraken.index-controller :as index-controller]))
-
-(def controller-map {
-    #"^/$" index-controller/render-view,
-    #"^/post/" post-controller/render-view
-  })
+  (:use [aleph.core]
+        [kraken.config])
+  (:require [kraken.static-files :as static-files]))
 
 (defn controller-for-uri [uri]
   (let [result (first 
                  (filter 
                    #(not (= nil (re-find (key %) uri))) 
-                   controller-map))]
+                   @*routes*))]
     (cond (= nil result) nil
           :else (val result))))
 

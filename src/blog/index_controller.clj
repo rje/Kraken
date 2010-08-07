@@ -1,17 +1,14 @@
-(ns kraken.index-controller
+(ns blog.index-controller
   (:import [java.io File]
            [java.util Date]
            [java.text SimpleDateFormat])
   (:use [aleph.core]
         [kraken.utils]
+        [blog.posts]
         [clojure.contrib.duck-streams :only [pwd]])
   (:require [net.cgrand.enlive-html :as html]
-            [com.ashafa.clutch :as couchdb]
-            [kraken.index-controller :as index-controller]))
-
-(def *blog-database*
-  (couchdb/get-database {:name "blog"
-                 :language "clojure"}))
+            [com.ashafa.clutch :as couchdb]))
+            
 
 (defn date-to-string [#^String date-string]
   (let [formatter (SimpleDateFormat. "yyyy/MM/dd")
@@ -37,13 +34,11 @@
   [:div#posts] (html/content (map post-template all-posts)))
 
 (defn render-view [channel request]
-  (if (not= nil (cached-page (:uri request)))
-    (send-valid-result channel (cached-page (:uri request)))
-    (couchdb/with-db *blog-database*
-      (let [posts (couchdb/get-view "posts" :all-posts 
-                    {:descending true, :limit 10})]
+  (let [uri (:uri request)
+        cached-entry (cached-page uri)]
+    (if (not= nil cached-entry)
+      (send-valid-result channel cached-entry)
+      (let [posts (get-posts-by-date)]
         (send-valid-result 
           channel
-          (set-cached-page 
-            (:uri request) 
-            (apply str (index-template (:rows posts)))))))))
+          (set-cached-page uri (apply str (index-template posts))))))))

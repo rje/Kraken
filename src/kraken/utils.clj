@@ -1,6 +1,7 @@
 (ns kraken.utils
   (:use [aleph.core]))
 
+;; Functions for having a simple in-memory caching system
 (def page-cache (atom {}))
 
 (defn cached-page [uri]
@@ -10,6 +11,13 @@
   (swap! page-cache assoc uri content)
   content)
 
+(defn invalidate-cache-entry [uri]
+  (set-cached-page uri nil))
+
+(defn clear-cache []
+  (reset! page-cache {}))
+
+;; A simple wrapper to return an http response
 (defn send-valid-result [channel content]
   (enqueue-and-close channel 
                      {:status 200
