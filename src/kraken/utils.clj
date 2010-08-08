@@ -1,5 +1,6 @@
 (ns kraken.utils
-  (:use [aleph.core]))
+  (:use [aleph.core]
+        [kraken.logging]))
 
 ;; Functions for having a simple in-memory caching system
 (def page-cache (atom {}))

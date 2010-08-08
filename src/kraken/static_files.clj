@@ -1,6 +1,7 @@
 (ns kraken.static-files
   (:import [java.io File])
   (:use [aleph.core]
+        [kraken.logging]
         [clojure.contrib.duck-streams :only [pwd]]))
 
 (defn get-public-file [filename]
@@ -17,5 +18,6 @@
         {:status 404, :body "This page was eaten by a grue"}))))
 
 (defn return-file [channel request]
+  (log :info (str "200: /public" (:uri request)))
   (let [file (get-public-file (:uri request))]
     (enqueue-and-close channel {:status 200, :body file})))

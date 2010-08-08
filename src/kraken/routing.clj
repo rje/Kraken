@@ -1,5 +1,6 @@
 (ns kraken.routing
   (:use [aleph.core]
+        [kraken.logging]
         [kraken.config])
   (:require [kraken.static-files :as static-files]))
 
@@ -15,6 +16,12 @@
  (not (= nil (controller-for-uri uri))))
 
 (defn route [channel request]
+  (log :info (str (:remote-addr request) " " 
+                  (:request-method request) ": " 
+                  (:scheme request) "://"
+                  (:server-name request) ":" (:server-port request)
+                  (:uri request) 
+                  (if (:query-string request) (:query-string request) "")))
   (cond (have-controller-for-uri? (:uri request))
           ((controller-for-uri (:uri request)) channel request)
         (static-files/file-exists? (:uri request))
