@@ -1,5 +1,6 @@
 (ns kraken.config
-  (:require kraken.logging))
+  (:require [kraken.logging]
+            [kraken.cache]))
 
 (def *port* (ref 8080))
 (def *routes* (atom {}))
@@ -17,3 +18,9 @@
   "See kraken.logging/set-logging-level for options"
   [log-level]
   (kraken.logging/set-logging-level log-level))
+
+(defn set-cache-implementation
+  "Choose an implementation for page caching.  Right now
+   kraken.default-cache.memory-cache-impl is provided"
+  [impl]
+  (kraken.cache/set-cache-system impl))
